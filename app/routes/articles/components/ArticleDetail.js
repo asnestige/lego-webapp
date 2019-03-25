@@ -14,7 +14,6 @@ import type { UserEntity } from 'app/reducers/users';
 import type { CommentEntity } from 'app/reducers/comments';
 import type { ID } from 'app/models';
 import NavigationTab, { NavigationLink } from 'app/components/NavigationTab';
-import type { YoutubePlayer } from 'app/models';
 
 type Props = {
   article: ArticleEntity,
@@ -23,7 +22,7 @@ type Props = {
   author: UserEntity,
   currentUser: UserEntity,
   deleteComment: (id: ID, commentTarget: string) => Promise<*>,
-  youtubeParams: YoutubePlayer
+  youtubeUrl?: string
 };
 
 /**
@@ -36,9 +35,9 @@ const ArticleDetail = ({
   currentUser,
   comments,
   deleteComment,
-  youtubeParams
+  youtubeUrl
 }: Props) => (
-  <Content banner={article.cover} youtubeParams={youtubeParams}>
+  <Content banner={article.cover} youtubeUrl={youtubeUrl}>
     <NavigationTab
       headerClassName={styles.headerClassName}
       className={styles.articleHeader}
